@@ -64,7 +64,12 @@ export const api = async <T>(
   } = options;
 
   const baseURL = getBaseURL();
-  const url = endpoint.startsWith("http") ? endpoint : `${baseURL}${endpoint}`;
+  // Ensure proper URL construction
+  const url = endpoint.startsWith("http") 
+    ? endpoint 
+    : `${baseURL}/${endpoint.startsWith('/') ? endpoint.slice(1) : endpoint}`;
+  
+  console.log('Final API URL:', url); // Debug log
 
   const requestOptions: RequestInit = {
     method,
