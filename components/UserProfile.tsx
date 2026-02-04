@@ -132,6 +132,8 @@ export function UserProfile() {
 
   // Fetch user profile data
   const fetchUserProfile = async (id: string) => {
+    if (!id) return;
+    
     try {
       setIsLoadingProfile(true);
       const response = await fetch(`http://localhost:5000/api/users/${id}`);

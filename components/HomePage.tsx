@@ -123,7 +123,7 @@ export function HomePage() {
           name: user.name,
           age: user.dateOfBirth ? new Date().getFullYear() - new Date(user.dateOfBirth).getFullYear() : 25,
           distance: '1.5km', // Calculate actual distance later
-          status: (new Date(user.lastActive) > new Date(Date.now() - 5 * 60 * 1000) ? 'online' : 'offline') as 'online' | 'offline',
+          status: (new Date(user.lastActive) > new Date(Date.now() - 5 * 60 * 1000) ? 'online' : 'offline') as "online" | "offline",
           photo: user.avatar || `https://images.unsplash.com/photo-150700321116${index % 10}?w=100&h=100&fit=crop&crop=face`,
           interests: user.interests || [],
           verified: user.isVerified,
@@ -135,7 +135,7 @@ export function HomePage() {
           mutualFriends: Math.floor(Math.random() * 10),
           rating: 4.5 + Math.random() * 0.5,
           badges: user.badges || []
-        }));
+        })) as User[];
         
         console.log('👥 Backend users converted:', backendUsers.length);
         console.log('👥 Mock users:', mockUsers.length);
@@ -453,7 +453,7 @@ export function HomePage() {
       setFilters({ onlineOnly: false, hideProfile: false });
       
       // Update location to selected area
-      const areaLocation = `${area.area}, ${area.city}`;
+      const areaLocation = `${(area as any).area}, ${(area as any).city}`;
       setLocation(areaLocation);
       
       // Fetch users from the selected area
@@ -474,7 +474,7 @@ export function HomePage() {
           name: user.name,
           age: user.dateOfBirth ? new Date().getFullYear() - new Date(user.dateOfBirth).getFullYear() : 25,
           distance: '0.5km',
-          status: new Date(user.lastActive) > new Date(Date.now() - 10 * 60 * 1000) ? 'online' : 'offline',
+          status: new Date(user.lastActive) > new Date(Date.now() - 10 * 60 * 1000) ? 'online' as const : 'offline' as const,
           photo: user.avatar || `https://images.unsplash.com/photo-150700321116${index % 10}?w=100&h=100&fit=crop&crop=face`,
           interests: user.interests || [],
           verified: user.isVerified,
