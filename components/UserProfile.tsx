@@ -110,7 +110,7 @@ export function UserProfile() {
   }, [user?.message]);
 
   // Fetch user profile data
-  const fetchUserProfile = async (id) => {
+  const fetchUserProfile = async (id: string) => {
     try {
       setIsLoadingProfile(true);
       const response = await fetch(`http://localhost:5000/api/users/${id}`);
@@ -358,7 +358,7 @@ export function UserProfile() {
                   <AvatarFallback className="text-lg bg-gradient-to-br from-blue-500 to-blue-600 text-white">
                     {user.name
                       .split(" ")
-                      .map((n) => n[0])
+                      .map((n: string) => n[0])
                       .join("")}
                   </AvatarFallback>
                 </Avatar>
@@ -593,7 +593,7 @@ export function UserProfile() {
               Badges
             </h3>
             <div className="flex flex-wrap gap-2">
-              {user.badges.map((badge) => (
+              {user.badges.map((badge: string) => (
                 <Badge
                   key={badge}
                   variant="outline"
@@ -610,7 +610,7 @@ export function UserProfile() {
           <div className="bg-white p-4 mb-2">
             <h3 className="font-semibold text-gray-900 mb-3">Interests</h3>
             <div className="flex flex-wrap gap-2">
-              {user.interests.map((interest) => (
+              {user.interests.map((interest: string) => (
                 <span
                   key={interest}
                   className="px-3 py-1.5 bg-blue-50 text-blue-700 rounded-full text-sm font-medium"
@@ -625,7 +625,7 @@ export function UserProfile() {
           {/* Photos Grid Section */}
           <div className="bg-white p-4 mb-2">
             <div className="grid grid-cols-3 gap-1">
-              {user.photos.map((photo, index) => (
+              {user.photos.map((photo: string, index: number) => (
                 <div
                   key={index}
                   className="aspect-square relative group cursor-pointer overflow-hidden rounded-lg"
@@ -759,7 +759,7 @@ export function UserProfile() {
               </DialogDescription>
             </DialogHeader>
             <div className="space-y-3 max-h-96 overflow-y-auto">
-              {user.joinedCommunities.map((community, index) => (
+              {user.joinedCommunities.map((community: any, index: number) => (
                 <div
                   key={index}
                   className="flex items-center justify-between p-4 bg-blue-50 rounded-lg border border-blue-100"
@@ -802,7 +802,7 @@ export function UserProfile() {
               </DialogDescription>
             </DialogHeader>
             <div className="space-y-3 max-h-96 overflow-y-auto">
-              {user.hostedMeetups.map((meetup, index) => (
+              {user.hostedMeetups.map((meetup: any, index: number) => (
                 <div
                   key={index}
                   className="p-4 bg-indigo-50 rounded-lg border border-indigo-100"
@@ -867,7 +867,7 @@ export function UserProfile() {
                     "Unlimited photos",
                     "Premium badge",
                     "Exclusive events",
-                  ].map((benefit) => (
+                  ].map((benefit: string) => (
                     <div key={benefit} className="flex items-center space-x-2">
                       <div className="w-1.5 h-1.5 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full animate-pulse"></div>
                       <span className="text-yellow-100">{benefit}</span>
