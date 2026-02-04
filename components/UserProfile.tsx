@@ -131,7 +131,7 @@ export function UserProfile() {
   }, [user?.message]);
 
   // Fetch user profile data
-  const fetchUserProfile = async (id: string) => {
+  const fetchUserProfile = async (id: string | undefined) => {
     if (!id) return;
     
     try {

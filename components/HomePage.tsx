@@ -460,7 +460,7 @@ export function HomePage() {
       const [lng, lat] = area.centerCoordinates;
       
       const response = await fetch(
-        `http://localhost:5000/api/location/area-users?city=${encodeURIComponent(area.city)}&latitude=${lat}&longitude=${lng}`
+        `http://localhost:5000/api/location/area-users?city=${encodeURIComponent((area as any).city)}&latitude=${lat}&longitude=${lng}`
       );
       
       const data = await response.json();
@@ -479,9 +479,9 @@ export function HomePage() {
           interests: user.interests || [],
           verified: user.isVerified,
           premium: user.isPremium,
-          bio: user.bio || `LocalityBay user in ${area.area}!`,
+          bio: user.bio || `LocalityBay user in ${(area as any).area}!`,
           profession: 'Professional',
-          location: user.location?.city || area.city,
+          location: user.location?.city || (area as any).city,
           joinDate: new Date(user.createdAt).toLocaleDateString('en-US', { month: 'long', year: 'numeric' }),
           mutualFriends: Math.floor(Math.random() * 10),
           rating: 4.5 + Math.random() * 0.5,
@@ -490,7 +490,7 @@ export function HomePage() {
         
         // Set ONLY area users (no mock users)
         setUsers(areaUsers);
-        console.log(`🎯 Loaded ${areaUsers.length} users from ${area.area}, ${area.city}`);
+        console.log(`🎯 Loaded ${areaUsers.length} users from ${(area as any).area}, ${(area as any).city}`);
       } else {
         setUsers([]);
       }
