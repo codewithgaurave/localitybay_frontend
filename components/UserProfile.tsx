@@ -35,12 +35,33 @@ import {
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { Textarea } from "./ui/textarea";
 
+interface UserData {
+  _id: string;
+  name: string;
+  userId: string;
+  dateOfBirth?: string;
+  avatar?: string;
+  isVerified: boolean;
+  isPremium?: boolean;
+  badges?: string[];
+  bio?: string;
+  interests?: string[];
+  message?: string;
+  photos?: string[];
+  location?: {
+    city?: string;
+  };
+  phone?: string;
+  email?: string;
+  createdAt: string;
+}
+
 export function UserProfile() {
   const navigate = useNavigate();
   const { userId } = useParams(); // Get userId from URL params
   const { user: authUser } = useAuth();
   const isOwnProfile = !userId; // If no userId in URL, it's own profile
-  const [profileUser, setProfileUser] = useState(null);
+  const [profileUser, setProfileUser] = useState<UserData | null>(null);
   const [isLoadingProfile, setIsLoadingProfile] = useState(false);
   const [showPhotoModal, setShowPhotoModal] = useState(false);
   const [selectedPhoto, setSelectedPhoto] = useState<string>("");
