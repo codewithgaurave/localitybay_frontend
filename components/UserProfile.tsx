@@ -38,7 +38,7 @@ import { Textarea } from "./ui/textarea";
 interface UserData {
   _id: string;
   name: string;
-  userId: string;
+  userId?: string;
   dateOfBirth?: string;
   avatar?: string;
   isVerified: boolean;
@@ -158,7 +158,7 @@ export function UserProfile() {
       fetchUserProfile(userId);
     } else {
       // Own profile - use auth user data
-      setProfileUser(authUser);
+      setProfileUser(authUser as UserData);
     }
   }, [userId, authUser]);
 

@@ -86,7 +86,7 @@ export function SignupPage() {
         password: formData.password,
         userId: formData.userId.startsWith('@') ? formData.userId : `@${formData.userId}`,
         phone: formData.phone,
-        dateOfBirth: formData.dateOfBirth ? new Date(formData.dateOfBirth) : undefined,
+        dateOfBirth: formData.dateOfBirth || undefined,
         gender: formData.gender || undefined,
         location: {
           address: formData.location.address,

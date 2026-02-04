@@ -443,7 +443,7 @@ export function HomePage() {
     setShowActiveAreasModal(true);
   };
 
-  const handleSelectActiveArea = async (area) => {
+  const handleSelectActiveArea = async (area: any) => {
     try {
       setShowActiveAreasModal(false);
       setIsLoadingUsers(true);
@@ -1247,10 +1247,10 @@ export function HomePage() {
                       <p className="text-sm text-gray-600">{area.city}</p>
                       <div className="flex items-center gap-4 mt-1">
                         <span className="text-xs text-green-600 font-medium">
-                          🟢 {area.onlineUsers} online
+                          🟢 {area.onlineUsers || 0} online
                         </span>
                         <span className="text-xs text-gray-500">
-                          👥 {area.totalUsers} total
+                          👥 {area.totalUsers || 0} total
                         </span>
                       </div>
                     </div>
