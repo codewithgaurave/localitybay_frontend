@@ -153,7 +153,7 @@ export function UserProfile() {
 
   // Load profile data based on URL
   useEffect(() => {
-    if (userId) {
+    if (userId && userId !== 'undefined') {
       // Viewing another user's profile
       fetchUserProfile(userId);
     } else {

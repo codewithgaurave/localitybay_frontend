@@ -116,14 +116,14 @@ export function HomePage() {
         console.log('📊 Full users array:', data.data?.users);
         
         // Convert backend users to frontend format
-        const backendUsers = data.data.users.map((user: any, index: number) => ({
+        const backendUsers: User[] = data.data.users.map((user: any, index: number) => ({
           id: index + 100, // Avoid ID conflicts with mock users
           backendId: user._id, // Store the actual backend ID
           userId: user.userId || `@${user.name.toLowerCase().replace(' ', '')}`,
           name: user.name,
           age: user.dateOfBirth ? new Date().getFullYear() - new Date(user.dateOfBirth).getFullYear() : 25,
           distance: '1.5km', // Calculate actual distance later
-          status: new Date(user.lastActive) > new Date(Date.now() - 5 * 60 * 1000) ? 'online' : 'offline',
+          status: (new Date(user.lastActive) > new Date(Date.now() - 5 * 60 * 1000) ? 'online' : 'offline') as 'online' | 'offline',
           photo: user.avatar || `https://images.unsplash.com/photo-150700321116${index % 10}?w=100&h=100&fit=crop&crop=face`,
           interests: user.interests || [],
           verified: user.isVerified,
@@ -1242,15 +1242,15 @@ export function HomePage() {
                   >
                     <div className="flex-1">
                       <h4 className="font-semibold text-gray-800 group-hover:text-blue-700">
-                        {area.area}
+                        {(area as any).area || (area as any).city}
                       </h4>
-                      <p className="text-sm text-gray-600">{area.city}</p>
+                      <p className="text-sm text-gray-600">{(area as any).city}</p>
                       <div className="flex items-center gap-4 mt-1">
                         <span className="text-xs text-green-600 font-medium">
-                          🟢 {area.onlineUsers || 0} online
+                          🟢 {(area as any).onlineUsers || 0} online
                         </span>
                         <span className="text-xs text-gray-500">
-                          👥 {area.totalUsers || 0} total
+                          👥 {(area as any).totalUsers || 0} total
                         </span>
                       </div>
                     </div>

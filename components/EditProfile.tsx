@@ -149,7 +149,8 @@ export function EditProfile() {
         photos: uploadedPhotos,
         location: {
           city: profile.location,
-          address: profile.location
+          address: profile.location,
+          coordinates: [0, 0] as [number, number]
         }
       };
       
