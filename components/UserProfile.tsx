@@ -189,9 +189,11 @@ export function UserProfile() {
   };
 
   const copyUserId = () => {
-    navigator.clipboard.writeText(user.userId);
-    setCopiedUserId(true);
-    setTimeout(() => setCopiedUserId(false), 2000);
+    if (user.userId) {
+      navigator.clipboard.writeText(user.userId);
+      setCopiedUserId(true);
+      setTimeout(() => setCopiedUserId(false), 2000);
+    }
   };
 
   const toggleOnlineStatus = async () => {

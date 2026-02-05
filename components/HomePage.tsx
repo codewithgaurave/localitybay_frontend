@@ -1234,7 +1234,7 @@ export function HomePage() {
                   <div className="animate-spin h-8 w-8 border border-blue-600 border-t-transparent rounded-full" />
                 </div>
               ) : activeAreas.length > 0 ? (
-                activeAreas.map((area, index) => (
+                activeAreas.map((area: any, index) => (
                   <div
                     key={`${area.city}-${area.area}`}
                     className="flex items-center justify-between p-4 bg-white/80 rounded-xl border border-blue-100 hover:bg-blue-50 transition-all duration-300 cursor-pointer group"
@@ -1242,15 +1242,15 @@ export function HomePage() {
                   >
                     <div className="flex-1">
                       <h4 className="font-semibold text-gray-800 group-hover:text-blue-700">
-                        {(area as any).area || (area as any).city}
+                        {area.area || area.city}
                       </h4>
-                      <p className="text-sm text-gray-600">{(area as any).city}</p>
+                      <p className="text-sm text-gray-600">{area.city}</p>
                       <div className="flex items-center gap-4 mt-1">
                         <span className="text-xs text-green-600 font-medium">
-                          🟢 {(area as any).onlineUsers || 0} online
+                          🟢 {area.onlineUsers || 0} online
                         </span>
                         <span className="text-xs text-gray-500">
-                          👥 {(area as any).totalUsers || 0} total
+                          👥 {area.totalUsers || 0} total
                         </span>
                       </div>
                     </div>
