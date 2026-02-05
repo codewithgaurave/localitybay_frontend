@@ -2,7 +2,7 @@
 
 // Configuration
 const getBaseURL = (): string => {
-  return "http://localhost:5000/api/";
+  return "https://localitybay-backend.onrender.com/api/";
 };
 
 // Token management

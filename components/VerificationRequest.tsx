@@ -29,7 +29,7 @@ export function VerificationRequest() {
       setIsLoading(true);
       
       // Submit verification request to backend
-      const response = await fetch('http://localhost:5000/api/users/verification-request', {
+      const response = await fetch('https://localitybay-backend.onrender.com/api/users/verification-request', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

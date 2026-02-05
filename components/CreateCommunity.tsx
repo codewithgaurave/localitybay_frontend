@@ -29,7 +29,7 @@ export function CreateCommunity() {
     try {
       setLoading(true);
       
-      const response = await fetch('http://localhost:5000/api/communities/create', {
+      const response = await fetch('https://localitybay-backend.onrender.com/api/communities/create', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

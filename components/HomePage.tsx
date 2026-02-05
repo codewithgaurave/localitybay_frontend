@@ -103,7 +103,7 @@ export function HomePage() {
       console.log('🔍 Fetching users from API...');
       
       // Fetch real users from backend
-      const response = await fetch('http://localhost:5000/api/users/nearby?latitude=28.6139&longitude=77.209&radius=50');
+      const response = await fetch('https://localitybay-backend.onrender.com/api/users/nearby?latitude=28.6139&longitude=77.209&radius=50');
       console.log('📡 API Response status:', response.status, response.ok);
       
       const data = await response.json();
@@ -162,7 +162,7 @@ export function HomePage() {
       setIsLoadingActiveAreas(true);
       console.log('🔍 Fetching active areas from API...');
       
-      const response = await fetch('http://localhost:5000/api/location/active-areas');
+      const response = await fetch('https://localitybay-backend.onrender.com/api/location/active-areas');
       const data = await response.json();
       
       if (response.ok && data.status && data.data.activeAreas) {
@@ -401,7 +401,7 @@ export function HomePage() {
     try {
       setIsLoading(true);
       
-      const response = await fetch('http://localhost:5000/api/messages/post', {
+      const response = await fetch('https://localitybay-backend.onrender.com/api/messages/post', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -460,7 +460,7 @@ export function HomePage() {
       const [lng, lat] = area.centerCoordinates;
       
       const response = await fetch(
-        `http://localhost:5000/api/location/area-users?city=${encodeURIComponent((area as any).city)}&latitude=${lat}&longitude=${lng}`
+        `https://localitybay-backend.onrender.com/api/location/area-users?city=${encodeURIComponent((area as any).city)}&latitude=${lat}&longitude=${lng}`
       );
       
       const data = await response.json();

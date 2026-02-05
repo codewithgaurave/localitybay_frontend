@@ -23,7 +23,7 @@ export function Messages() {
 
   const fetchChats = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/chat/my-chats', {
+      const response = await fetch('https://localitybay-backend.onrender.com/api/chat/my-chats', {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }

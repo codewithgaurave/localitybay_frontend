@@ -39,7 +39,7 @@ export function Communities() {
       if (search) params.append('search', search);
       if (selectedCategory) params.append('category', selectedCategory);
       
-      const response = await fetch(`http://localhost:5000/api/communities?${params}`);
+      const response = await fetch(`https://localitybay-backend.onrender.com/api/communities?${params}`);
       const data = await response.json();
       
       if (data.status) {
@@ -54,7 +54,7 @@ export function Communities() {
 
   const joinCommunity = async (communityId: string) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/communities/${communityId}/join`, {
+      const response = await fetch(`https://localitybay-backend.onrender.com/api/communities/${communityId}/join`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`

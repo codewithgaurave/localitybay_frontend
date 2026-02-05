@@ -136,7 +136,7 @@ export function UserProfile() {
     
     try {
       setIsLoadingProfile(true);
-      const response = await fetch(`http://localhost:5000/api/users/${id}`);
+      const response = await fetch(`https://localitybay-backend.onrender.com/api/users/${id}`);
       const data = await response.json();
       
       if (response.ok && data.status) {
@@ -200,7 +200,7 @@ export function UserProfile() {
     try {
       setIsUpdatingStatus(true);
       
-      const response = await fetch('http://localhost:5000/api/messages/status', {
+      const response = await fetch('https://localitybay-backend.onrender.com/api/messages/status', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -230,7 +230,7 @@ export function UserProfile() {
     try {
       setIsPostingMessage(true);
       
-      const response = await fetch('http://localhost:5000/api/messages/post', {
+      const response = await fetch('https://localitybay-backend.onrender.com/api/messages/post', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -263,7 +263,7 @@ export function UserProfile() {
     try {
       setIsPostingMessage(true);
       
-      const response = await fetch('http://localhost:5000/api/messages/clear', {
+      const response = await fetch('https://localitybay-backend.onrender.com/api/messages/clear', {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -294,7 +294,7 @@ export function UserProfile() {
       setIsFollowLoading(true);
       const endpoint = isFollowing ? 'unfollow' : 'follow';
       
-      const response = await fetch(`http://localhost:5000/api/follow/${userId}/${endpoint}`, {
+      const response = await fetch(`https://localitybay-backend.onrender.com/api/follow/${userId}/${endpoint}`, {
         method: isFollowing ? 'DELETE' : 'POST',
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -315,7 +315,7 @@ export function UserProfile() {
     if (!userId) return;
     
     try {
-      const response = await fetch('http://localhost:5000/api/chat/create', {
+      const response = await fetch('https://localitybay-backend.onrender.com/api/chat/create', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -52,7 +52,7 @@ export function Chat({ chatId, onBack }: ChatProps) {
 
   const fetchChats = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/chat/my-chats', {
+      const response = await fetch('https://localitybay-backend.onrender.com/api/chat/my-chats', {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
@@ -68,7 +68,7 @@ export function Chat({ chatId, onBack }: ChatProps) {
 
   const fetchChatMessages = async (id: string) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/chat/${id}/messages`, {
+      const response = await fetch(`https://localitybay-backend.onrender.com/api/chat/${id}/messages`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
@@ -87,7 +87,7 @@ export function Chat({ chatId, onBack }: ChatProps) {
 
     try {
       setLoading(true);
-      const response = await fetch(`http://localhost:5000/api/chat/${selectedChat._id}/send`, {
+      const response = await fetch(`https://localitybay-backend.onrender.com/api/chat/${selectedChat._id}/send`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -109,7 +109,7 @@ export function Chat({ chatId, onBack }: ChatProps) {
 
   const createChat = async (participantId: string) => {
     try {
-      const response = await fetch('http://localhost:5000/api/chat/create', {
+      const response = await fetch('https://localitybay-backend.onrender.com/api/chat/create', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
